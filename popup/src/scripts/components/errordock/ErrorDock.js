@@ -9,7 +9,6 @@ import { fetchWebPage } from '../../actions';
 import Header from '../header/Header';
 import WebPageForm from '../webpageform/WebPageForm';
 import Menu from '../menu/Menu';
-import SettingsMain from '../settings/SettingsMain';
 
 const CHROME_URL_REGEX = /^(chrome:\/\/)((\w|\d)+\/*)*/;
 

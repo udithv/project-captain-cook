@@ -1,4 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const LoginContainer = styled.div`
+    text-align: center;
+`;
+
+const LogoBox = styled.div`
+    margin-bottom: 2rem;
+`;
+
+const Logo = styled.img`
+    width: 100%;
+    height: 26rem;
+`
 
 class Login extends Component {
   constructor(props) {
@@ -7,10 +21,10 @@ class Login extends Component {
 
   renderLoginContent() {
     return (
-        <div className="login">
-            <div className="login__logo-box">
-                <img className="login__logo" src="img/loginbanner.svg" alt="svg image" />
-            </div>
+        <LoginContainer>
+            <LogoBox>
+                <Logo src="img/loginbanner.svg" alt="svg image" />
+            </LogoBox>
             <div className="u-margin-bottom-small">
                 <a 
                   className="btn btn--animated btn--primary btn--blue-border"
@@ -34,7 +48,7 @@ class Login extends Component {
                     </span>
                 </a>
             </div>
-        </div>
+        </LoginContainer>
     );
 
   }

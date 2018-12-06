@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import styled from 'styled-components';
 import { goTo } from 'route-lite';
 
 import MenuItem from './MenuItem';
@@ -8,6 +8,12 @@ import MenuItem from './MenuItem';
 import Dock from '../dock/Dock';
 import SettingsMain from '../settings/SettingsMain';
 import Team from '../team/Team';
+
+const MenuContainer = styled.div`
+  overflow-y: auto;
+  width: 100%;
+  height: calc(100% - 8.5rem);
+`;
 
 export default class Menu extends Component {
 
@@ -28,8 +34,8 @@ export default class Menu extends Component {
   }
   render() {
     return (
-        <div className="menu">
-            <div className="menu__items">
+        <MenuContainer>
+            <div>
                 <MenuItem
                   title="Docks"
                   name="dock"
@@ -49,7 +55,7 @@ export default class Menu extends Component {
                   gothere={this.gothere}
                 />
             </div>
-         </div>    
+         </MenuContainer>    
     )
   }
 }

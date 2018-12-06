@@ -1,10 +1,33 @@
 import React, {Component} from 'react';
+import styled from 'styled-components';
 import {connect} from 'react-redux';
 import { goTo } from 'route-lite';
 
 import { deletePage } from '../../actions';
 
 import WebPageQRCodeView from './WebPageQRCodeView';
+import { DockCardContainer, DockListIcon } from '../common/common';
+
+const WebPageCardContainer = styled.div`
+    height: 8rem;
+
+    p {
+        max-width: 20rem;
+    }
+
+    a {
+        cursor: pointer;
+        transition: all .2s;
+
+        &:active, &:focus {
+            transform: translate(0) scale(1);
+        }
+
+        &:hover {
+            transform: translate(-1px) scale(1.1);
+        }
+    }
+`;
 
 class WebPageCard extends Component {
   constructor(props) {
@@ -26,12 +49,12 @@ class WebPageCard extends Component {
 
   render() {
       return (
-        <div className="dock__card">
-            <div className="dock__card-webpage" >
-                <img 
+        <DockCardContainer>
+            <WebPageCardContainer>
+                <DockListIcon 
                     src={this.props.webPage.favIconUrl} 
                     alt="favicon"
-                    className="dock__list-icon left"
+                    float="left"
                 />
                 <p className="left" title={this.props.webPage.title} >
                     {this.props.webPage.title}
@@ -57,8 +80,8 @@ class WebPageCard extends Component {
                 >
                     <img src="img/delete.svg" alt="delete" />
                 </a>
-            </div>
-        </div>
+            </WebPageCardContainer>
+        </DockCardContainer>
       );
   }
 

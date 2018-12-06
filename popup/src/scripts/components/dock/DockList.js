@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from  'react-redux';
 
 import DockCard from './DockCard';
-
+import { CardListContainer, LoaderContainer, Loader } from '../common/common';
 
 class DockList extends Component {
 
     renderLoader() {
         return (
-            <div className="dock__loading">
-                <img src="img/wheel.svg" alt="" className="loader loader__large" />
-            </div>
+            <LoaderContainer>
+                <Loader src="img/wheel.svg" alt="" size="large" />
+            </LoaderContainer>
         );
     }
 
     renderList() {
         return (
-            <div className="dock__list">
+            <CardListContainer>
                 {
                     this.props.docks.map(({ projectName, _id }) => {
                         return <DockCard
@@ -27,7 +28,7 @@ class DockList extends Component {
                     })
                 }
                 
-            </div>
+            </CardListContainer>
         );
     }
 

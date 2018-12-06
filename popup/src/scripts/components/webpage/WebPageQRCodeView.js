@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import { goBack } from 'route-lite';
 import QRCode from 'qrcode-react';
 
+import { Heading, FooterContainer, FooterNav } from '../common/common';
+
 export default class WebPageQRCodeView extends Component {
 
   renderHeading() {
       return (
-          <div className="dock__heading">
+          <Heading>
               {this.props.title}
-          </div>
+          </Heading>
       );
   }
 
   renderUtilityButton() {
       return (
-          <div className="footer">
-              <div className="footer-nav">
+          <FooterContainer>
+              <FooterNav>
                   <a 
                       onClick={() => goBack()} 
                       className="btn__float btn__float--medium"
@@ -23,8 +25,8 @@ export default class WebPageQRCodeView extends Component {
                   >
                       <img src="img/back-arrow.svg" alt="dockit" />
                   </a>
-              </div>
-          </div>
+              </FooterNav>
+          </FooterContainer>
       );
   }
 

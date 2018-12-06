@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link, goTo } from 'route-lite';
 
@@ -7,8 +8,14 @@ import { dockWebPage } from '../../actions';
 import Dock from '../dock/Dock';
 import DockResult from '../dock/DockResult';
 import DockView from '../dock/DockView';
-
 import WebPageQRCodeView from '../webpage/WebPageQRCodeView';
+import { FormGroup, FormLabel, FormInput } from '../common/common';
+
+const WebPageFormContainer = styled.div`
+    margin-top: 1.2rem;
+`;
+
+const FormTextArea = FormInput.withComponent('textarea');
 
 class WebPageForm extends Component {
     constructor(props) {
@@ -66,25 +73,22 @@ class WebPageForm extends Component {
 
 
     render() {
-        const { url, title } = this.props.webpage;
         return(
-            <div className="dock__form">
-                <form  className="form" onSubmit={this.handleSubmit.bind(this)} >
-                    <div className="form__group">
-                        <input 
+            <WebPageFormContainer>
+                <form onSubmit={this.handleSubmit.bind(this)} >
+                    <FormGroup>
+                        <FormInput 
                             type="text"
-                            className="form__input" 
                             placeholder="Title" 
                             value={this.state.title}
                             onChange={event => this.setState({ title: event.target.value })}
                             disabled={this.state.submitted}
                         />
-                        <label  className="form__label">Title</label>
-                    </div>
-                    <div className="form__group">
-                        <input 
+                        <FormLabel>Title</FormLabel>
+                    </FormGroup>
+                    <FormGroup>
+                        <FormInput 
                             type="text"
-                            className="form__input" 
                             placeholder="URL"  
                             value={this.state.url}
                             onChange={event => this.setState({ url: event.target.value })}
@@ -97,9 +101,9 @@ class WebPageForm extends Component {
                         >
                             <img src="img/qrcode.svg" alt="qrcode"  />
                         </a>
-                        <label  className="form__label">Url</label>
-                    </div>
-                    <div className="form__group">
+                        <FormLabel>Url</FormLabel>
+                    </FormGroup>
+                    <FormGroup>
 
                         <Link component={Dock}>
                             <span 
@@ -115,23 +119,22 @@ class WebPageForm extends Component {
                         <span className="dock__name" onClick={this.handleClick.bind(this)}>
                             {this.props.current_dock ? this.props.current_dock.projectName : 'no current dock'}
                         </span>
-                    </div>
-                    <div className="form__group">
-                        <textarea 
+                    </FormGroup>
+                    <FormGroup>
+                        <FormTextArea 
                             rows="3"
-                            className="form__input" 
                             placeholder="Description" 
                             onChange={event => this.setState({ description: event.target.value })}
                             value={this.state.description}
                             disabled={this.state.submitted}
                         />
-                        <label className="form__label">Description</label>
-                    </div>
-                    <div className="form__group">
+                        <FormLabel>Description</FormLabel>
+                    </FormGroup>
+                    <FormGroup>
                         { this.renderSubmitButton() }
-                    </div>
+                    </FormGroup>
                 </form>
-            </div>
+            </WebPageFormContainer>
         );
     }
 }

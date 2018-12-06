@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { goBack, goTo } from 'route-lite';
 
@@ -6,6 +7,11 @@ import { getWebPages, openTabs, clearWebpages } from '../../actions';
 
 import WebPageList from '../webpage/WebPageList';
 import DockDelete from './DockDelete';
+import { Heading, FooterContainer, FooterNav } from '../common/common';
+
+const DockViewContainer = styled.div`
+    margin-top: 1.4rem;
+`;
 
 class DockView extends Component {
 
@@ -29,17 +35,17 @@ class DockView extends Component {
 
     renderHeading() {
         return (
-            <div className="dock__heading">
+            <Heading>
                 {this.props.projectName}
-            </div>
+            </Heading>
         );
     }
 
     renderUtilityButton() {
 
         return (
-            <div className="footer">
-                <div className="footer-nav">
+            <FooterContainer>
+                <FooterNav>
                     <a 
                         onClick={() => goBack()} 
                         className="btn__float btn__float--medium"
@@ -61,8 +67,8 @@ class DockView extends Component {
                     >
                         <img src="img/delete.svg" alt="dockit"/>
                     </a>)}
-                </div>
-            </div>
+                </FooterNav>
+            </FooterContainer>
         );
     }
 
@@ -70,11 +76,11 @@ class DockView extends Component {
 
     render() {
         return (
-            <div className="dock__view" >
+            <DockViewContainer >
                 {this.renderHeading()}
                 <WebPageList webpages={this.props.webpages} />
                 {this.renderUtilityButton()}
-            </div>
+            </DockViewContainer>
         );
     }
 }

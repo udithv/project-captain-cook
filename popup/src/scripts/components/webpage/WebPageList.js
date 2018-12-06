@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 import WebPageCard from './WebPageCard';
+import { CardListContainer, LoaderContainer, Loader } from '../common/common';
+
 
 class WebPageList extends Component {
   
@@ -14,9 +16,9 @@ class WebPageList extends Component {
   renderContent() {
     if(this.props.webpages == null){
         return (
-            <div className="dock__loading">
-                <img src="img/wheel.svg" alt="" className="loader loader__large" />
-            </div>
+            <LoaderContainer>
+                <Loader src="img/wheel.svg" alt="" size="large" />
+            </LoaderContainer>
         );
     }else if(this.props.webpages.length === 0){
         return <div>No webpages yet</div>
@@ -28,12 +30,10 @@ class WebPageList extends Component {
   }
 
   render() {
-      console.log(this.props.webpages);
       return (
-          <div className="dock__list dock__list-webpage">
-               {/* this.props.webpages.length ? this.renderList() : 'No webpages docked yet.' */} 
+          <CardListContainer webpage>
                {this.renderContent()}
-          </div>
+          </CardListContainer>
       );
   }
 

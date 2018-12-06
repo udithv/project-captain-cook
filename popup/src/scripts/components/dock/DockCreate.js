@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { addDock } from '../../actions';
+
+import { FormGroup, FormInput } from '../common/common';
+
+const DockCreateFormContainer = styled.div`
+    margin: 2rem 1.6rem;
+`;
 
 class DockCreate extends Component {
     constructor(props) {
@@ -21,12 +28,12 @@ class DockCreate extends Component {
 
     render () {
         return (
-            <div className="dock-create__form">
-                <form className="form" onSubmit={this.handleSubmit.bind(this)} >
-                    <div className="form__group-inline">
-                        <input 
+            <DockCreateFormContainer>
+                <form onSubmit={this.handleSubmit.bind(this)} >
+                    <FormGroup inline>
+                        <FormInput 
                             type="text" 
-                            className="form__input-inline" 
+                            inline
                             placeholder="Dock Name"
                             onChange={ e => this.setState({ projectName: e.target.value })}
                             value={this.state.projectName}
@@ -34,9 +41,9 @@ class DockCreate extends Component {
                         <button className="btn-submit-inline btn-submit-inline--small">
                             <img className="btn-submit-inline__icon" src="img/plus-black-symbol.svg" alt="dockit" />
                         </button>
-                    </div>
+                    </FormGroup>
                 </form>
-            </div>
+            </DockCreateFormContainer>
         );
     }
 }

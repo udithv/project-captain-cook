@@ -1,38 +1,39 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { goTo } from 'route-lite';
 
 import Menu from '../menu/Menu';
+import { FooterContainer, FooterNav } from '../common/common';
+
+const DockSuccess = styled.div`
+    text-align: center;
+    height: 65%;
+    margin: 3rem 0;
+`;
 
 class DockResult extends Component {
 
     renderContent() {
         return (
-            <div className="dock__success">
-                <div className="dock__success-box">
-                        <img className="dock__success-logo" src="img/boat-from-front-view.svg" alt="success image" />
-                </div>
-                <div className="u-margin-bottom-small">
-                    <span className="dock__success-message">
-                            {this.props.message}
-                    </span>
-                </div>
-            </div>
+            <DockSuccess>
+                {this.props.message}
+            </DockSuccess>
         );
     }
 
 
     renderNavButton() {
         return (
-            <div className="footer">
-                <div className="footer-nav">
+            <FooterContainer>
+                <FooterNav>
                     <a 
                         className="btn__float btn__float--medium"
                         onClick={() => goTo(Menu)}
                     >
                         <img src="img/menu.svg" alt="dockit" />
                     </a>
-                </div>
-            </div>
+                </FooterNav>
+            </FooterContainer>
         );
     }
 

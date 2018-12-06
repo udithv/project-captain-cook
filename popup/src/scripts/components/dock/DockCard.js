@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'route-lite';
-
 
 import { setCurrentDock } from '../../actions';
 
 import DockView from './DockView';
-
+import { DockCardContainer, DockListIcon, Loader } from '../common/common';
 
 class DockCard extends Component {
 
@@ -18,13 +18,13 @@ class DockCard extends Component {
 
         if(this.props.nxt_curr_dock) {
             if(this.props.id === this.props.nxt_curr_dock) {
-                return <img src="img/wheel.svg" alt="loading" className="loader loader__small right" />;
+                return <Loader src="img/wheel.svg" alt="loading" size="small" float="right" />;
             }else {
                 return (
-                    <img 
+                    <DockListIcon 
                         src="img/inactive.svg" 
                         alt="unselected" 
-                        className="dock__list-icon right"
+                        float="right"
                         onClick={this.handleClickSelect.bind(this)}
                     />
                 );
@@ -32,14 +32,14 @@ class DockCard extends Component {
         }else {
             if(this.props.id === this.props.current_dock._id) {
                 return (
-                    <img src="img/active.svg" alt="selected" className="dock__list-icon right" />
+                    <DockListIcon src="img/active.svg" alt="selected" float="right" />
                 );
             }else {
                 return (
-                    <img 
+                    <DockListIcon 
                         src="img/inactive.svg" 
                         alt="unselected" 
-                        className="dock__list-icon right"
+                        float="right"
                         onClick={this.handleClickSelect.bind(this)}
                     />
                 );
@@ -51,13 +51,13 @@ class DockCard extends Component {
     render() {
         const { id, projectName } = this.props;
         return (
-            <div className="dock__card">
-                <img src="img/sea-ship-with-containers.svg" alt="" className="dock__list-icon left" />
+            <DockCardContainer>
+                <DockListIcon src="img/sea-ship-with-containers.svg" alt="" float="left" />
                 <Link component={DockView} componentProps={{ projectName, id }} >
                     <p className="left">{this.props.projectName}</p>
                 </Link>
                 {this.renderCheck()}
-            </div>
+            </DockCardContainer>
         );
     }
 }

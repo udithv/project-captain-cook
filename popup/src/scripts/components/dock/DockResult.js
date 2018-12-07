@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { goTo } from 'route-lite';
 
 import Menu from '../menu/Menu';
-import { FooterContainer, FooterNav } from '../common/common';
+import { FloatButton, FooterContainer, FooterNav } from '../common/common';
 
 const DockSuccess = styled.div`
     text-align: center;
@@ -26,12 +26,13 @@ class DockResult extends Component {
         return (
             <FooterContainer>
                 <FooterNav>
-                    <a 
-                        className="btn__float btn__float--medium"
+                    <FloatButton
                         onClick={() => goTo(Menu)}
+                        size="medium"
+                        title="Go To Menu"
                     >
-                        <img src="img/menu.svg" alt="dockit" />
-                    </a>
+                        <img src="img/menu.svg" alt="menu" />
+                    </FloatButton>
                 </FooterNav>
             </FooterContainer>
         );

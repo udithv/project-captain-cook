@@ -159,3 +159,146 @@ export const DockListIcon = styled.img`
         transform: translateY(0) scale(1);
     }
 `;
+
+
+export const FloatButton = styled.a`
+    &,
+    &:link,
+    &:visited {
+
+        border-radius: 50%;
+        position: relative;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 .5rem 2rem rgba(0, 0, 0,.2);
+        border: none;
+        background-color: #fff;
+        cursor: pointer;
+        ${props => {
+            if(props.size === 'small') {
+                return `
+                    height: 5rem;
+                    width: 5rem;
+                    padding: .8rem .8rem;
+                `
+            } else if(props.size === 'medium') {
+                return `
+                    height: 7rem;
+                    width: 7rem;
+                    padding: 1rem 1rem;
+                `
+            }
+        }}
+        transition: all .2s;
+
+    }
+
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0,.2);
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0,.2);
+
+    }
+
+
+    img {
+        ${props => {
+            if(props.size === 'small') {
+                return `
+                    height: 3rem;
+                    width: 3rem;
+                `
+            } else if(props.size === 'medium') {
+                return `
+                    height: 4rem;
+                    width: 4rem;
+                `
+            }
+        }}
+    }
+`;
+
+export const SubmitButton = styled.button`
+    background-color: #fff;
+    border: none;
+    color: #006df0;
+    border-radius: ${props => (props.inline ? '50%' : '10rem')};
+    ${props => (props.inline ? 
+        `
+            margin-left: .5rem;
+        `
+        :
+
+        `
+            padding: 1.5rem 1rem;
+            width: 90%;
+        `
+    )}
+
+    ${props => {
+        if(props.size == 'small') {
+            return `
+                height: 5rem;
+                width: 5rem;
+            `
+        }
+    }}
+    font-size: 1.6rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    transition: all .2s;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+
+    &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0; 
+    }
+
+    &:active, &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        
+        ${props => {
+            if(props.size == 'small') {
+                return `
+                    width: 3rem;
+                    height: 3rem;
+                `
+            }else {
+                return `
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    margin-left: 1.6rem;
+                    float: left;
+                `
+            }
+        }}
+        
+    }
+
+    span {
+        float: left;
+        padding-top: 1.4rem;
+        margin-left: 2.4rem;
+        font-weight: 900;
+    }
+`;

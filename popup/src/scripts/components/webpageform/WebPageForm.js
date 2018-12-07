@@ -9,7 +9,7 @@ import Dock from '../dock/Dock';
 import DockResult from '../dock/DockResult';
 import DockView from '../dock/DockView';
 import WebPageQRCodeView from '../webpage/WebPageQRCodeView';
-import { FormGroup, FormLabel, FormInput } from '../common/common';
+import { SubmitButton, FormGroup, FormLabel, FormInput } from '../common/common';
 
 const WebPageFormContainer = styled.div`
     margin-top: 1.2rem;
@@ -58,16 +58,15 @@ class WebPageForm extends Component {
 
     renderSubmitButton() {
         return (
-            <button className="btn-submit">
+            <SubmitButton>
                 <img 
-                    className="btn-submit__icon" 
                     src="img/big-anchor.svg" 
                     alt="dockit"
                 />
-                <span className="btn-submit__text">
+                <span>
                     Dock it
                 </span>
-            </button>
+            </SubmitButton>
         );
     }
 

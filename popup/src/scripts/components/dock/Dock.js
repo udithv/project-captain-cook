@@ -4,7 +4,7 @@ import { goBack } from 'route-lite';
 
 import DockCreate from './DockCreate';
 import DockList from './DockList';
-import { FooterContainer, FooterNav } from '../common/common';
+import { FloatButton, FooterContainer, FooterNav } from '../common/common';
 
 import { fetchDocks } from '../../actions';
 
@@ -20,12 +20,14 @@ class Dock extends Component {
         return (
             <FooterContainer>
                 <FooterNav>
-                    <a  
-                        onClick={() => goBack() }
-                        className="btn__float btn__float--medium"
+                    
+                    <FloatButton
+                        onClick={() => goBack()}
+                        size="medium"
+                        title="Go Back"
                     >
                         <img src="img/back-arrow.svg" alt="dockit" />
-                    </a>
+                    </FloatButton>
                 </FooterNav>
             </FooterContainer>
         );

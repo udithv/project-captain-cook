@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { addDock } from '../../actions';
 
-import { FormGroup, FormInput } from '../common/common';
+import { SubmitButton, FormGroup, FormInput } from '../common/common';
 
 const DockCreateFormContainer = styled.div`
     margin: 2rem 1.6rem;
@@ -38,9 +38,15 @@ class DockCreate extends Component {
                             onChange={ e => this.setState({ projectName: e.target.value })}
                             value={this.state.projectName}
                         />
-                        <button className="btn-submit-inline btn-submit-inline--small">
+                        {/* <button className="btn-submit-inline btn-submit-inline--small">
                             <img className="btn-submit-inline__icon" src="img/plus-black-symbol.svg" alt="dockit" />
-                        </button>
+                        </button> */}
+                        <SubmitButton
+                            inline
+                            size="small"
+                        >
+                            <img src="img/plus-black-symbol.svg" alt="add_dock" />
+                        </SubmitButton>
                     </FormGroup>
                 </form>
             </DockCreateFormContainer>

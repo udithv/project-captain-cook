@@ -7,7 +7,7 @@ import { getWebPages, openTabs, clearWebpages } from '../../actions';
 
 import WebPageList from '../webpage/WebPageList';
 import DockDelete from './DockDelete';
-import { Heading, FooterContainer, FooterNav } from '../common/common';
+import { FloatButton, Heading, FooterContainer, FooterNav } from '../common/common';
 
 const DockViewContainer = styled.div`
     margin-top: 1.4rem;
@@ -46,27 +46,29 @@ class DockView extends Component {
         return (
             <FooterContainer>
                 <FooterNav>
-                    <a 
-                        onClick={() => goBack()} 
-                        className="btn__float btn__float--medium"
+                    <FloatButton
+                        onClick={() => goBack()}
+                        size="medium"
                         title="Go Back"
                     >
                         <img src="img/back-arrow.svg" alt="dockit" />
-                    </a>
-                    <a 
-                        className="btn__float btn__float--medium"
-                        title="Open all webpages"
+                    </FloatButton>
+                    <FloatButton
                         onClick={this.handleMultiple.bind(this)}
+                        size="medium"
+                        title="Open all webpages"
                     >
-                        <img src="img/open_tab_multiple.svg" alt="dockit"/>
-                    </a>
-                    {(this.props.id !== this.props.current_dock._id) && (<a 
-                        className="btn__float btn__float--medium"
-                        title="Delete dock"
+                        <img src="img/open_tab_multiple.svg" alt="open_multiple_tabs"/>
+                    </FloatButton>
+                    {(this.props.id !== this.props.current_dock._id) && (
+                    <FloatButton
                         onClick={this.handleDelete.bind(this)}
+                        size="medium"
+                        title="Delete dock"
                     >
-                        <img src="img/delete.svg" alt="dockit"/>
-                    </a>)}
+                        <img src="img/delete.svg" alt="delete_dock"/>
+                    </FloatButton>
+                )}
                 </FooterNav>
             </FooterContainer>
         );

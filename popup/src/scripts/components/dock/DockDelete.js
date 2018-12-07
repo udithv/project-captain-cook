@@ -6,7 +6,7 @@ import { goBack, goTo } from 'route-lite';
 import { deleteDock } from '../../actions';
 
 import DockResult from './DockResult';
-import { FooterContainer, FooterNav } from '../common/common';
+import { FloatButton, FooterContainer, FooterNav } from '../common/common';
 
 const DockMessage = styled.div`
     text-align: center;
@@ -51,18 +51,20 @@ class DockDelete extends Component {
         return (
             <FooterContainer>
                 <FooterNav>
-                    <a 
-                        className="btn__float btn__float--medium"
+                    <FloatButton
                         onClick={this.handleClick.bind(this)}
+                        size="medium"
+                        title="Yes"
                     >
-                        <img src="img/check-mark.svg" alt="dockit" />
-                    </a>
-                    <a 
-                        className="btn__float btn__float--medium"
+                        <img src="img/check-mark.svg" alt="confirm" />
+                    </FloatButton>
+                    <FloatButton
                         onClick={() => goBack()}
+                        size="medium"
+                        title="Go Back"
                     >
-                        <img src="img/back-arrow.svg" alt="dockit"/>
-                    </a>
+                        <img src="img/back-arrow.svg" alt="go Back"/>
+                    </FloatButton>
                 </FooterNav>
             </FooterContainer>  
         );

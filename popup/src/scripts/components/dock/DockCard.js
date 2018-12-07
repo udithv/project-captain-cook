@@ -53,8 +53,10 @@ class DockCard extends Component {
         return (
             <DockCardContainer>
                 <DockListIcon src="img/sea-ship-with-containers.svg" alt="" float="left" />
-                <Link component={DockView} componentProps={{ projectName, id }} >
-                    <p className="left">{this.props.projectName}</p>
+                <Link component={DockView} componentProps={{ projectName, id }} style={{
+                    textDecoration: 'none'
+                }} >
+                    <p style={{ float: 'left' }}>{this.props.projectName}</p>
                 </Link>
                 {this.renderCheck()}
             </DockCardContainer>

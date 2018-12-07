@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { FloatButton } from '../common/common';
 
 const MenuItemContainer = styled.div`
     display: inline-block;
@@ -24,12 +25,12 @@ export default class MenuItem extends Component {
       const { name, iconUrl, title } = this.props;
     return (
         <MenuItemContainer>
-            <a 
-                className="btn__float btn__float--small"
+            <FloatButton
+                size="small"
                 onClick={() => this.props.gothere(name)}
             >
                 <img src={iconUrl} alt={name} />
-            </a>
+            </FloatButton>
             <MenuItemName>
                 {title}
             </MenuItemName>

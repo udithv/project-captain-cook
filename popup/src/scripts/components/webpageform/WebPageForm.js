@@ -9,13 +9,49 @@ import Dock from '../dock/Dock';
 import DockResult from '../dock/DockResult';
 import DockView from '../dock/DockView';
 import WebPageQRCodeView from '../webpage/WebPageQRCodeView';
-import { SubmitButton, FormGroup, FormLabel, FormInput } from '../common/common';
+import { FloatButton, SubmitButton, FormGroup, FormLabel, FormInput } from '../common/common';
 
 const WebPageFormContainer = styled.div`
     margin-top: 1.2rem;
 `;
 
 const FormTextArea = FormInput.withComponent('textarea');
+
+const DockBtn = FloatButton.withComponent('span');
+
+const CurrDockName = styled.span`
+    margin-left: .8rem;
+    border-bottom: 3px solid #006df0;
+    color: black;
+    cursor: pointer;
+`;
+
+const FormInputIcon = styled.a`
+    &,
+    &:link, 
+    &:visited {
+        text-decoration: none;
+        position: absolute;
+        cursor: pointer;
+        left: -2px;
+        top: 13px;
+        transition: all .2s; 
+    }
+
+    &:hover {
+        transform: scale(1.2);
+    }
+
+    &:active, 
+    &:focus {
+        transform: scale(1); 
+    }
+
+    img {
+        height: 2rem;
+        width: 2rem; 
+    }
+`;
 
 class WebPageForm extends Component {
     constructor(props) {
@@ -93,31 +129,28 @@ class WebPageForm extends Component {
                             onChange={event => this.setState({ url: event.target.value })}
                             disabled 
                         />
-                        <a 
-                            className="form__input-icon" 
+                        <FormInputIcon  
                             title="Get QRCode"
                             onClick={this.handleWebPageQRCode.bind(this)}
                         >
                             <img src="img/qrcode.svg" alt="qrcode"  />
-                        </a>
+                        </FormInputIcon>
                         <FormLabel>Url</FormLabel>
                     </FormGroup>
                     <FormGroup>
 
                         <Link component={Dock}>
-                            <span 
-                                className="btn__float btn__float--small"
-                            >
+                            <DockBtn size="small">
                                 <img 
-                                src="img/sea-ship-with-containers.svg"
-                                alt="dockit" 
+                                    src="img/sea-ship-with-containers.svg"
+                                    alt="docks" 
                                 />
-                            </span>
+                            </DockBtn>
                         </Link>
                          
-                        <span className="dock__name" onClick={this.handleClick.bind(this)}>
+                        <CurrDockName onClick={this.handleClick.bind(this)}>
                             {this.props.current_dock ? this.props.current_dock.projectName : 'no current dock'}
-                        </span>
+                        </CurrDockName>
                     </FormGroup>
                     <FormGroup>
                         <FormTextArea 

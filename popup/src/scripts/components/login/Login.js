@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { LoginButton } from '../common/common';
+
+const ChromeExtHeader = styled.header`
+    color: #006df0;
+    font-family: 'Baumans', cursive;
+    text-align: center;
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    margin-top: 1.5rem !important;
+`;
+
 const LoginContainer = styled.div`
     text-align: center;
 `;
@@ -25,29 +38,23 @@ class Login extends Component {
             <LogoBox>
                 <Logo src="img/loginbanner.svg" alt="svg image" />
             </LogoBox>
-            <div className="u-margin-bottom-small">
-                <a 
-                  className="btn btn--animated btn--primary btn--blue-border"
-                  onClick={() =>  window.open("https://errordock.herokuapp.com/auth/google")/* window.open("http://localhost:5000/auth/google") */}
+                <LoginButton 
+                  onClick={() =>  window.open("https://errordock.herokuapp.com/auth/google")}
                 > 
-                        <img className="btn__icon" src="img/google-plus.svg" alt="sign-in-google" /> 
-                        <span className="btn__content-text">
+                        <img src="img/google-plus.svg" alt="sign-in-google" /> 
+                        <span>
                             Sign In with Google
                         </span>
-                </a>
-            </div>
-            <div className="u-margin-bottom-small">
-                <a 
-                  className="btn btn--animated btn--primary btn--blue-border"
-                  onClick={() =>  window.open("https://errordock.herokuapp.com/auth/github")/* window.open("http://localhost:5000/auth/github") */}
+                </LoginButton>
+                <LoginButton 
+                  onClick={() =>  window.open("https://errordock.herokuapp.com/auth/github")}
                 > 
                     
-                    <img className="btn__icon" src="img/github.svg" alt="sign-in-github" /> 
-                    <span className="btn__content-text">
+                    <img src="img/github.svg" alt="sign-in-github" /> 
+                    <span>
                         Sign In with Github
                     </span>
-                </a>
-            </div>
+                </LoginButton>
         </LoginContainer>
     );
 
@@ -56,9 +63,9 @@ class Login extends Component {
   render() {
     return(
       <div>
-          <header className="chrome-ext__header u-margin-top-small">
+          <ChromeExtHeader>
             ErrorDock
-          </header>
+          </ChromeExtHeader>
           {this.renderLoginContent()}
       </div>
     )

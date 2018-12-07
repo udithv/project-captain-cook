@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spin } from './animations';
+import { spin, moveInBottom } from './animations';
 
 export const Heading = styled.div`
     font-size: 2.2rem;
@@ -301,4 +301,92 @@ export const SubmitButton = styled.button`
         margin-left: 2.4rem;
         font-weight: 900;
     }
+`;
+
+export const LoginButton = styled.a`
+    display: block;
+    margin-bottom: 1.5rem !important;
+    
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all 0.2s;
+        position: relative;
+        font-size: 1.6rem;
+        cursor: pointer;
+
+        color: #006df0;
+        background-color: #fff;
+        border: 2px solid #006df0;
+
+        animation: ${moveInBottom} .5s ease-out .30s;
+        animation-fill-mode: backwards;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+
+    }
+
+    span {
+        float: right;
+        padding-top: .3rem;
+        font-weight: 900;
+    }
+
+    img {
+        width: 3rem;
+        height: 3rem;
+        margin-right: .9rem;
+        float: left;
+    }
+
+`;
+
+export const IconBtn = styled.a`
+    &, 
+    &:link, 
+    &:visited {
+        height: 5rem;
+        width: 5rem;
+        padding: .8rem .8rem;
+        ${props => props.float && `float: ${props.float};` }
+    }
+
+    img {
+        height: 3rem;
+        width: 3rem;
+    }
+
 `;

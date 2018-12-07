@@ -6,7 +6,7 @@ import { goTo } from 'route-lite';
 import { deletePage } from '../../actions';
 
 import WebPageQRCodeView from './WebPageQRCodeView';
-import { DockCardContainer, DockListIcon } from '../common/common';
+import { IconBtn, DockCardContainer, DockListIcon } from '../common/common';
 
 const WebPageCardContainer = styled.div`
     height: 8rem;
@@ -59,27 +59,27 @@ class WebPageCard extends Component {
                 <p className="left" title={this.props.webPage.title} >
                     {this.props.webPage.title}
                 </p>
-                <a 
-                    className="btn__float--small right" 
+                <IconBtn
+                    float="right" 
                     title="Get QRCode" 
                     onClick={this.handleWebPageQRCode.bind(this)}
                 >
                     <img src="img/qrcode.svg" alt="get qrcode" />
-                </a>
-                <a 
-                    className="btn__float--small right" 
+                </IconBtn>
+                <IconBtn 
+                    float="right" 
                     title={this.props.webPage.url} 
                     onClick={this.handleNewTab.bind(this)}
                 >
                     <img src="img/external-link.svg" alt="open in new tab" />
-                </a>
-                <a 
-                    className="btn__float--small right" 
+                </IconBtn>
+                <IconBtn 
+                    float="right" 
                     title="Delete webpage"
                     onClick={this.handleDelete.bind(this)}
                 >
                     <img src="img/delete.svg" alt="delete" />
-                </a>
+                </IconBtn>
             </WebPageCardContainer>
         </DockCardContainer>
       );
